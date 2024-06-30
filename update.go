@@ -226,6 +226,17 @@ func (b *Bot) ProcessUpdate(u Update) {
 			b.handle(OnAutoDeleteTimer, c)
 			return
 		}
+
+	}
+
+	if u.MessageReaction != nil {
+		b.handle(OnReaction, c)
+		return
+	}
+
+	if u.MessageReactionCount != nil {
+		b.handle(OnReactionCount, c)
+		return
 	}
 
 	if u.EditedMessage != nil {
